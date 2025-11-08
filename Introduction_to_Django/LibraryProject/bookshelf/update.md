@@ -1,6 +1,7 @@
 # updates the instance title
 
-new_book.title = 'Nineteen Eighty-Four'
+book = Book.objects.get(title="1984")
+book.title = 'Nineteen Eighty-Four'
 
 > > > new_book.save()
 
