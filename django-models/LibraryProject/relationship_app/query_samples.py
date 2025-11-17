@@ -9,4 +9,4 @@ def books_in_library(library_name):
 
 
 def get_librarian_via_query(library):
-    return library.librarian
+    return Librarian.objects.get(library=library)
