@@ -25,6 +25,8 @@ urlpatterns = [
     path('bookshelf/', include('bookshelf.urls')),
     path('', RedirectView.as_view(url='/bookshelf/', permanent=True)),
     path('relationship_app/', include('relationship_app.urls')),
+    path('accounts/', include('accounts.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 if settings.DEBUG:
