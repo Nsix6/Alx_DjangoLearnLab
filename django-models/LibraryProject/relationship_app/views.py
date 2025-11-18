@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from relationship_app.models import Book, Library
+from .models import Book, Library
 
 def book_list(request):
     """View to list all books titles with their authors."""
