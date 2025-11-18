@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Book, Library
+from .models import Book
 
 def book_list(request):
     """View to list all books titles with their authors."""
@@ -8,6 +8,7 @@ def book_list(request):
 
 
 from django.views.generic import DetailView
+from .models import Library
 
 class BookListView(DetailView):
     """Library details, list all books"""
