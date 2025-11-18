@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Book
 
-def book_list(request):
+def list_books(request):
     """View to list all books titles with their authors."""
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
@@ -10,7 +10,7 @@ def book_list(request):
 from django.views.generic.detail import DetailView
 from .models import Library
 
-class BookListView(DetailView):
+class LibraryDetailView(DetailView):
     """Library details, list all books"""
     model = Library
     context_object_name = 'library'
