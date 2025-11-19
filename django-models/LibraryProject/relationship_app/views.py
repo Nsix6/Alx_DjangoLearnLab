@@ -22,47 +22,21 @@ class LibraryDetailView(DetailView):
         return context
     
 
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 def register(request):
-    """User Reistration View"""
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-
-            user = authenticate(
-                username=user.username,
-                password=request.POST.get("password1")
-            )
-
-            if user:
-                login(request, user)
-                return redirect('book_list')
-    
+            login(request, user)
+            return redirect("book_list")
     else:
         form = UserCreationForm()
-    return render(request, 'relationship_app/register.html', {'form': form}) 
+
+    return render(request, "relationship_app/register.html", {"form": form})
+ 
 
 
-def login_view(request):
-    """User Login View"""
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            return redirect('book_list')
-    else:
-        form = AuthenticationForm()
-    return render(request, 'relationship_app/login.html', {'form': form})
-
-
-def logout_view(request):
-    """Loogut view"""
-    if request.method == "POST":
-        logout(request)
-        return redirect('login')
-    return render(request, 'relationship_app/logout.html')
