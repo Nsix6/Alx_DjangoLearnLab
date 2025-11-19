@@ -128,4 +128,5 @@ LOGIN_REDIRECT_URL = reverse_lazy('book_list')
 
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
-#LOGIN_URL = '/login/'
+LOGIN_URL = "/relationship_app/login/"
+
