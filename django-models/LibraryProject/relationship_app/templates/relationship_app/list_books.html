@@ -6,6 +6,13 @@
     <title>List of Books</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% endif %}
+
     <h1>Books Available:</h1>
     <ul>
         {% for book in books %}

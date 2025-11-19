@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookshelf.apps.BookshelfConfig',
     'relationship_app.apps.RelationshipAppConfig',
-    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -125,8 +124,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 from django.urls import reverse_lazy
-LOGIN_REDIRECT_URL = reverse_lazy('logout_page')
+LOGIN_REDIRECT_URL = reverse_lazy('book_list')
 
 
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = reverse_lazy('login')
+#LOGIN_URL = '/login/'

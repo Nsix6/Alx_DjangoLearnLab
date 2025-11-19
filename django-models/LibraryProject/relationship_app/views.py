@@ -24,7 +24,7 @@ class LibraryDetailView(DetailView):
 
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login
 from django.views.generic import CreateView
 
 
@@ -32,13 +32,16 @@ class Register(CreateView):
     """User registration view"""
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
-    template_name = "registration/register.html"
-
+    template_name = "relationship_app/login.html"
 
     def form_valid(self, form):
-        user = form.save()
-        print("Saved user:", user)
-        return redirect('login')
+        response = super().form_valid(form)
+        user = authenticate(username=form.cleaned_data['username'],
+                            password=form.cleaned_data['password1'])
+        if user is not None:
+            login(self.request, user)
+        return response
+
 
 
 
