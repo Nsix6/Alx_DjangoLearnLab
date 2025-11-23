@@ -25,7 +25,6 @@ urlpatterns = [
     path('bookshelf/', include('bookshelf.urls')),
     path('', RedirectView.as_view(url='/bookshelf/', permanent=True)),
     path('relationship_app/', include('relationship_app.urls')),
-    path('authentication_app/', include('authentication_app.urls')),
 ]
 
 if settings.DEBUG:

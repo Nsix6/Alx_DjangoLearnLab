@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookshelf.apps.BookshelfConfig',
     'relationship_app.apps.RelationshipAppConfig',
-    'authentication_app',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +129,7 @@ LOGIN_REDIRECT_URL = reverse_lazy('book_list')
 
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 LOGIN_URL = "/relationship_app/login/"
-AUTH_USER_MODEL = 'authentication_app.CustomUser'
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
