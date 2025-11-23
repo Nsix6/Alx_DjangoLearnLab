@@ -65,3 +65,19 @@ Create test users and assign them to different groups (Viewers, Editors, Admins)
 Log in as each user and attempt to view, create, edit, or delete content.
 
 Confirm that access is restricted according to the group’s assigned permissions.
+
+Implementing HTTPS and Secure Redirects in Django
+
+SSL/TLS Certificates: Encrypt all traffic between client and server.
+
+SECURE_SSL_REDIRECT: Forces all requests to HTTPS.
+
+HSTS (Strict Transport Security): Instructs browsers to always use HTTPS for the domain and subdomains.
+
+Secure Cookies: Ensures session and CSRF cookies are only sent over HTTPS.
+
+X-Frame-Options: Prevents clickjacking by disallowing iframes.
+
+Content-Type Nosniff: Stops browsers from guessing MIME types.
+
+XSS Filter: Enables browser’s built-in protection against cross-site scripting.
