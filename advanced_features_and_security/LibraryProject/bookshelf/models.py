@@ -41,6 +41,13 @@ class CustomUserManager(BaseUserManager):
     """
     Custom user manager to handle user creation.
     """
+    class Meta:
+        permission = [
+            ('can_view', 'Can view content'),
+            ('can_edit', 'Can edit content'),
+            ('can_delete', 'Can delete content'),
+            ('can_create', 'Can create content'),
+        ]
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
