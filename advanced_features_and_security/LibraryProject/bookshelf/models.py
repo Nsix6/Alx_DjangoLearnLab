@@ -8,6 +8,13 @@ class Book(models.Model):
     """
     Defines a Book model with title, author, and publication year fields.
     """
+    class Meta:
+        permission = [
+            ('can_view', 'Can view content'),
+            ('can_edit', 'Can edit content'),
+            ('can_delete', 'Can delete content'),
+            ('can_create', 'Can create content'),
+        ]
     title  = models.CharField(max_length=200, unique=True, help_text="Title of the book")
     author = models.CharField(max_length=100)
     summary = models.TextField(blank=True, null=True, max_length=1000, help_text="Brief summary of the book",)
@@ -41,13 +48,6 @@ class CustomUserManager(BaseUserManager):
     """
     Custom user manager to handle user creation.
     """
-    class Meta:
-        permission = [
-            ('can_view', 'Can view content'),
-            ('can_edit', 'Can edit content'),
-            ('can_delete', 'Can delete content'),
-            ('can_create', 'Can create content'),
-        ]
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
